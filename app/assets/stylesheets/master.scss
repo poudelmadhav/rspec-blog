@@ -1,8 +1,22 @@
+$primary-font: 'Open Sans', sans-serif;  
+$secondary-font: 'Dosis', sans-serif;
 $footer-height: 45px;
+
+.navbar-default {
+  font-family: $secondary-font;
+  background-color: white;
+}
 
 html, body {
    height: 100%;
+   font-family: $primary-font;
    /* The html and body elements cannot have any padding or margin. */
+}
+
+.navbar-default .navbar-brand {
+  font-weight: 100; 
+  font-size: 30px;
+  letter-spacing: 2px;
 }
 
 /* Wrapper for page content to push down footer */
