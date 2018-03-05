@@ -37,6 +37,11 @@ gem 'jquery-rails'
 # Use simple form
 gem 'simple_form'
 
+# Rspec
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
