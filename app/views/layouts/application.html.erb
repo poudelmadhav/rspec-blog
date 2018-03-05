@@ -9,6 +9,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrap">
+    	<%= render 'shared/nav' %>
+      <div class="container">
+      	<%= render 'shared/flash_messages' %>
+        <%= yield %>
+      </div>
+    </div><!-- wrap -->
+    <%= render 'shared/footer' %>
   </body>
 </html>
