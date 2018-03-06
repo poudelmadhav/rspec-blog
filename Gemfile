@@ -42,6 +42,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
 
+# Rails controller testing
+gem 'rails-controller-testing'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
