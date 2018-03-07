@@ -37,6 +37,11 @@ gem 'jquery-rails'
 # Use simple form
 gem 'simple_form'
 
+# Factory bot for creating many posts easily for test
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
 # Rspec
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
