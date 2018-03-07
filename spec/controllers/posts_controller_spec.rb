@@ -24,7 +24,7 @@ RSpec.describe PostsController, type: :controller do
 	end
 
 	describe "POST #create" do
-		context "with valid attributes" do
+		context "when valid attributes" do
 			it "creates a new post" do
 				expect {
 					post :create, params: { post: FactoryBot.attributes_for(:post) }
@@ -37,7 +37,7 @@ RSpec.describe PostsController, type: :controller do
 			end
 		end
 
-		context "with invalid attributes" do
+		context "when invalid attributes" do
 			it "doesn't create a new post" do
 				expect {
 					post :create, params: { post: FactoryBot.attributes_for(:invalid_post) }
@@ -56,6 +56,40 @@ RSpec.describe PostsController, type: :controller do
 			post = FactoryBot.create(:post)
 			get :edit, params: { id: post.id }
 			expect(response).to render_template :edit
+		end
+	end
+
+	describe "PUT #update" do
+		context "when valid attributes" do
+			it "updates the post" do
+				post = FactoryBot.create(:post)
+				put :update , params: { id: post.id, post: FactoryBot.attributes_for(:post, title: 'New Title', author: 'Larry') }
+				post.reload
+				expect(post.title).to eq("New Title")
+				expect(post.author).to eq("Larry")
+			end
+
+			it "redirects to root_path" do
+				post = FactoryBot.create(:post)
+				put :update , params: { id: post.id, post: FactoryBot.attributes_for(:post, title: 'New Title', author: 'Larry') }
+				expect(response).to redirect_to root_path
+			end
+		end
+
+		context "when invalid attributes" do
+			it "doesn't update the post" do
+				post = FactoryBot.create(:post)
+				put :update , params: { id: post.id, post: FactoryBot.attributes_for(:post, title: 'New Title', author: 'Larry', content: 'Hi') }
+				post.reload
+				expect(post.title).to_not eq("New Title")
+				expect(post.title).to_not eq("Larry")
+			end
+
+			it "renders the edit template" do
+				post = FactoryBot.create(:post)
+				put :update , params: { id: post.id, post: FactoryBot.attributes_for(:invalid_post) }
+				expect(response).to render_template :edit
+			end
 		end
 	end
 end
