@@ -48,7 +48,14 @@ group :development, :test do
 end
 
 # Rails controller testing
-gem 'rails-controller-testing'
+group :development, :test do
+  gem 'rails-controller-testing'
+end
+
+# Model test
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
