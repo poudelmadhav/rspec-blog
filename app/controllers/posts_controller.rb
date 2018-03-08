@@ -14,8 +14,10 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.create(post_params)
 		if @post.valid?
+			flash[:success] = "Your post has been created!"
 			redirect_to root_path
 		else
+			flash[:alert] = "Woops! Looks like there has been an error!"
 			render :new
 		end
 	end
@@ -28,8 +30,10 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post.update(post_params)
 		if @post.valid?
+			flash[:success] = "Your post has been updated!"
 			redirect_to post_path
 		else
+			flash[:alert] = "Woops! Looks like there has been an error!"
 			render :edit
 		end
 	end
@@ -37,6 +41,7 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
+		flash[:success] = "The post was successfully deleted!"
 		redirect_to root_path
 	end
 
