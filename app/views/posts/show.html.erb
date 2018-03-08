@@ -4,7 +4,7 @@
 			<div class="panel-heading"><h4><%= @post.title %></h4></div>
     		<div class="panel-body">
 				<p><b>Author: </b><%= @post.author %></p>
-				<p><b>Content: </b><%= @post.content %></p>
+				<p class="text-justify"><b>Content: </b><%= @post.content %></p>
 				<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-sm btn-success' %>
 				<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure want to delete? This cannot be undone."}, class: 'btn btn-sm btn-danger' %>
 			</div>
