@@ -1,21 +1,25 @@
 <div class="row">
 	<div class="col-xs-12 col-md-6 col-md-offset-3">
-		<h1>Blog Posts</h1>
-		<% @posts.each do |post| %>
-		<div class="panel-group">
-			<div class="panel panel-success">
-				<div class="panel-heading"><h4><%= post.title %></h4></div>
-	    		<div class="panel-body">
-					<blockquote>
-						<p><%= post.content %></p>
-						<small class="pull-right">by <%= post.author %></small>
-					</blockquote>
-					<%= link_to "View", post_path(post), class: 'btn btn-sm btn-info' %>
-					<%= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-success' %>
-					<%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure want to delete? This cannot be undone."}, class: 'btn btn-sm btn-danger' %>
+		<% if @posts.present? %>
+			<h1>Blog Posts</h1>
+			<div class="panel-group">
+				<% @posts.each do |post| %>			
+				<div class="panel panel-success">
+					<div class="panel-heading"><h4><%= post.title %></h4></div>
+		    		<div class="panel-body">
+						<blockquote>
+							<p><%= post.content %></p>
+							<small class="pull-right">by <%= post.author %></small>
+						</blockquote>
+						<%= link_to "View", post_path(post), class: 'btn btn-sm btn-info' %>
+						<%= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-success' %>
+						<%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure want to delete? This cannot be undone."}, class: 'btn btn-sm btn-danger' %>
+					</div>
 				</div>
+				<% end %>
 			</div>
-		</div>
+		<% else %>
+	        <p class="alert alert-info alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>There are no posts yet. Please go to <%= link_to 'New Post', new_post_path, class: 'alert-link' %> to add one.</p>
 		<% end %>
 	</div>
 </div>
