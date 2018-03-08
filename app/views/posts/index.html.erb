@@ -19,7 +19,7 @@
 				<% end %>
 			</div>
 		<% else %>
-	        <p class="alert alert-info alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>There are no posts yet. Please go to <%= link_to 'New Post', new_post_path, class: 'alert-link' %> to add one.</p>
+	        <p class="alert alert-info alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>There are no posts yet. Please go to New Post or add one <%= link_to 'here', new_post_path, class: 'alert-link' %>.</p>
 		<% end %>
 	</div>
 </div>
