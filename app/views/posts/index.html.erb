@@ -1,7 +1,21 @@
-<h1>Blog Posts</h1>
-<% @posts.each do |post| %>
-	<h2><%= post.title %> by <%= post.author %></h2>
-	<p>
-		<%= post.content %>
-	</p>
-<% end %>
+<div class="row">
+	<div class="col-xs-12 col-md-6 col-md-offset-3">
+		<h1>Blog Posts</h1>
+		<% @posts.each do |post| %>
+		<div class="panel-group">
+			<div class="panel panel-success">
+				<div class="panel-heading"><h4><%= post.title %></h4></div>
+	    		<div class="panel-body">
+					<blockquote>
+						<p><%= post.content %></p>
+						<small class="pull-right">by <%= post.author %></small>
+					</blockquote>
+					<%= link_to "View", post_path(post), class: 'btn btn-sm btn-info' %>
+					<%= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-success' %>
+					<%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure want to delete? This cannot be undone."}, class: 'btn btn-sm btn-danger' %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

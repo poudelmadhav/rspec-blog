@@ -72,7 +72,7 @@ RSpec.describe PostsController, type: :controller do
 			it "redirects to root_path" do
 				post = FactoryBot.create(:post)
 				put :update , params: { id: post.id, post: FactoryBot.attributes_for(:post, title: 'New Title', author: 'Larry') }
-				expect(response).to redirect_to root_path
+				expect(response).to redirect_to post_path
 			end
 		end
 
